@@ -10,7 +10,7 @@ int knapsack(vector<int> &values, vector<int> &weights, int n, int C,  vector<ve
         return dp[n][C];
     }
     if(weights[n-1] <= C){
-        return dp[n][C] = max(values[n-1] + knapsack(values,weights,n-1,C-                weights[n-1],dp), knapsack(values,weights,n-1,C,dp));
+        return dp[n][C] = max(values[n-1] + knapsack(values,weights,n-1,C-weights[n-1],dp), knapsack(values,weights,n-1,C,dp));
     }
     else{
           return dp[n][C] = knapsack(values,weights,n-1,C,dp);   
