@@ -1,0 +1,30 @@
+
+
+// Submitted on Jun 13, 2022, 1:58:15 PM
+
+#include <bits/stdc++.h>
+int dp[100001];
+int fun(int n, vector<int> &heights)
+{
+    // Write your code here.
+    if(n==0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    int left = fun(n-1,heights) + abs(heights[n]-heights[n-1]);
+    int  right=INT_MAX;
+    if(n > 1)
+    {
+        right = fun(n-2,heights) + abs(heights[n]-heights[n-2]);
+    }
+        
+    return dp[n] = min(left,right);
+}
+int frogJump(int n, vector<int> &heights)
+{
+    // Write your code here.
+    memset(dp,-1,sizeof(dp));
+    return fun(n-1, heights);
+}
